@@ -8,83 +8,63 @@ namespace UnitTestProject
     public class UnitTest1
     {
         [TestMethod]
-        public void TestMethod1()
+        public void TrianglNormal()
         {
-            Triangle obj = new Triangle();            
-            bool result = obj.IsTriangle(3,4,5);
-            Assert.AreEqual(true, result);
+            Assert.IsTrue(Triangle.IsTriangle(3,4,5));
         }
 
         [TestMethod]
-        public void TestMethod2()
+        public void TrianglWithOneLarge()
         {
-            Triangle obj = new Triangle();
-            bool result = obj.IsTriangle(11, 4, 5);
-            Assert.AreEqual(true, result);
+            Assert.IsFalse(Triangle.IsTriangle(11, 4, 5));
         }
 
         [TestMethod]
-        public void TestMethod3()
+        public void TrianglNormalTo()
         {
-            Triangle obj = new Triangle();
-            bool result = obj.IsTriangle(7, 8, 13);
-            Assert.AreEqual(true, result);
+            Assert.IsTrue(Triangle.IsTriangle(7, 8, 13));
         }
 
         [TestMethod]
-        public void TestMethod4()
+        public void TrianglWithOneZeroSide()
         {
-            Triangle obj = new Triangle();
-            bool result = obj.IsTriangle(1, 0, 10);
-            Assert.AreEqual(true, result);
+            Assert.IsFalse(Triangle.IsTriangle(1, 0, 10));
         }
 
         [TestMethod]
-        public void TestMethod5()
+        public void TrianglTwoSide()
         {
-            Triangle obj = new Triangle();
-            bool result = obj.IsTriangle(2, 2, 5);
-            Assert.AreEqual(true, result);
+            Assert.IsFalse(Triangle.IsTriangle(2, 2, 5));
         }
 
         [TestMethod]
-        public void TestMethod6()
+        public void NormalTriangl()
         {
-            Triangle obj = new Triangle();
-            bool result = obj.IsTriangle(31, 24, 54);
-            Assert.AreEqual(true, result);
+            Assert.IsTrue(Triangle.IsTriangle(31, 24, 54));
         }
 
         [TestMethod]
-        public void TestMethod7()
+        public void TrianglWithSideMineZero()
         {
-            Triangle obj = new Triangle();
-            bool result = obj.IsTriangle(4, 4, 5);
-            Assert.AreEqual(true, result);
+            Assert.IsTrue(Triangle.IsTriangle(-1, 4, 5));
         }
 
         [TestMethod]
-        public void TestMethod8()
+        public void TriangleWithThreeEqulSide()
         {
-            Triangle obj = new Triangle();
-            bool result = obj.IsTriangle(1, 1, 1);
-            Assert.AreEqual(true, result);
+            Assert.IsTrue(Triangle.IsTriangle(1, 1, 1));
         }
 
         [TestMethod]
-        public void TestMethod9()
+        public void ToNormalTriangl()
         {
-            Triangle obj = new Triangle();
-            bool result = obj.IsTriangle(8, 13, 11);
-            Assert.AreEqual(true, result);
+            Assert.IsTrue(Triangle.IsTriangle(8, 13, 11));
         }
 
         [TestMethod]
-        public void TestMethod10()
+        public void TrianglWithZeroSides()
         {
-            Triangle obj = new Triangle();
-            bool result = obj.IsTriangle(9, 1, 7);
-            Assert.AreEqual(true, result);
+            Assert.IsFalse(Triangle.IsTriangle(0, 0, 0));
         }
     }
 }
