@@ -6,7 +6,7 @@ using OpenQA.Selenium.Chrome;
 namespace SeleniumTests
 {
     [TestFixture]
-    public class Tests /*: BrouserFunction*/
+    public class Tests
     {
         public IWebDriver webDriver;
 
