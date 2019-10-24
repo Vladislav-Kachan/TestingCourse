@@ -19,15 +19,7 @@ namespace SeleniumTests
             webDriver = new ChromeDriver();
             webDriver.Manage().Window.Maximize();
             webDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(60);
-            webDriver.Navigate().GoToUrl("https://car-rent.by/");
-            var ImageCar = GetWebElementByXPath("//div[@class='elementor-element elementor-element-693b434 elementor-widget elementor-widget-image']");
-            ImageCar.Click();
-            var NameField = GetWebElementByName("field7[]");
-            var PhoneField = GetWebElementByName("field9[]");
-            var MailField = GetWebElementByName("field8");
-            NameField.SendKeys("Vadim");
-            PhoneField.SendKeys("-3751111111");
-            MailField.SendKeys("test@mail.ru");
+            webDriver.Navigate().GoToUrl("https://car-rent.by/");            
         }
         
         [TearDown]

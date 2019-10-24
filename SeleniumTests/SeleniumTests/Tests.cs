@@ -1,5 +1,6 @@
 ﻿using System;
 using NUnit.Framework;
+using OpenQA.Selenium;
 
 namespace SeleniumTests
 {
@@ -17,7 +18,15 @@ namespace SeleniumTests
         //Ожидаемый результат: Появление сообщения "Ваше сообщение отправлено!"
         [Test]
         public void OrderWithInvalidPhone()
-        {               
+        {
+            var ImageCar = GetWebElementByXPath("//div[@class='elementor-element elementor-element-693b434 elementor-widget elementor-widget-image']");
+            ImageCar.Click();
+            var NameField = GetWebElementByName("field7[]");
+            var PhoneField = GetWebElementByName("field9[]");
+            var MailField = GetWebElementByName("field8");
+            NameField.SendKeys("Vadim");
+            PhoneField.SendKeys("-3751111111");
+            MailField.SendKeys("test@mail.ru");
             var OrderButton = GetWebElementByXPath("//button[@class='button submit-button']");
             OrderButton.Click();
             var CompliteOrder = GetWebElementByXPath("//div[@class='final-success']");
@@ -27,26 +36,16 @@ namespace SeleniumTests
         //Ввод неверной даты
         //Шаги
         //Зайти на сайт
-        //Перейти налюбое авто
-        //Ввести в поле 'Ваше имя' Vadim
-        //Ввести в поле 'Номер телефона' -3751111111
-        //Ввести в поле 'Email' test@mail.ru
-        //Ввести в поле 'Начало аренды' 10/09/1999
-        //Ввести в поле 'Окончание аренды' 23/10/2019
-        //Нажать кнопку 'Забронировать'
-        //Ожидаемый результат: Появление сообщения "Ваше сообщение отправлено!"
+        //В поле "Марка или модель" ввести Lada
+        //Нажать поиск        
+        //Ожидаемый результат: В списке появяться машины модели Lada
         [Test]
         public void OrderWithPastDate()
         {
-            var StartRent = GetWebElementByName("field1");
-            var EndRent = GetWebElementByName("field2");
-            StartRent.SendKeys("10/09/1999");
-            EndRent.SendKeys("23/10/2019");
-            var OrderButton = GetWebElementByXPath("//button[@class='button submit-button']");
-            OrderButton.Click();            
-            //var CompliteOrder = GetWebElementByXPath("//div[@class='final-success']");
-            var CompliteOrder = GetWebElementByXPath("//div[@class='final-success']");
-            Assert.AreEqual(CompliteOrder.Text, "check");
+            var SearchMarka = GetWebElementByName("phrase");
+            SearchMarka.SendKeys("Lada"+Keys.Enter);
+            var NameCar = GetWebElementByXPath("//h2[@class='entry-title']");            
+            Assert.IsTrue(NameCar.Text.StartsWith("Lada"));            
         }
     }
 }
