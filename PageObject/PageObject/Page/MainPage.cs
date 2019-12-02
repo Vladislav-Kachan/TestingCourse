@@ -13,7 +13,7 @@ namespace PageObject.Page
     {
 
         [FindsBy(How = How.XPath, Using = @"//div[@class='elementor-element elementor-element-693b434 elementor-widget elementor-widget-image']")]
-        private IWebElement FirstCar { get; set; }
+        private IWebElement FirstCar;
 
         public MainPage(IWebDriver browser)
         {

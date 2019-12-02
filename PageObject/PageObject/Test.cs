@@ -4,44 +4,64 @@ using PageObject.Page;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.PageObjects;
+using NUnit.Framework;
 
 namespace PageObject
 {
     [TestClass]
     public class Test
     {
-        IWebDriver Browser;
+        private IWebDriver Browser;
         private static string HomePage = "https://car-rent.by/";
+
+        public class personalInfo
+        {
+            public string firstName = "Vlad";
+            public string mobileNumber = "-3751111111";
+            public string mail = "somemail@mail.ru";
+        }
+
+        public personalInfo Person = new personalInfo();
+
+        [SetUp]
+        public void OpenBrouserWithSite()
+        {
+            Browser = new ChromeDriver();
+            Browser.Navigate().GoToUrl(HomePage);
+            
+        }
+
+        [TearDown]
+        public void CloseBrouser()
+        {
+            Browser.Quit();
+        }
 
         [TestMethod]
         public void InvalidOrderDate()
         {
-            Browser = new ChromeDriver();
-            Browser.Navigate().GoToUrl(HomePage);
-
+            OpenBrouserWithSite();
             MainPage mainPage = new MainPage(Browser).ClickFirstCar();       
 
             OrderCarPage orderCarPage = new OrderCarPage(Browser)
-                .InputRentInformation("vlad", "-3751111111", "somemail@mail.ru");
+                .InputRentInformation(Person);
 
-            Assert.AreEqual("check\r\nВаше сообщение отправлено!", orderCarPage.completeOrder.Text);
-            Browser.Quit();
+            NUnit.Framework.Assert.AreEqual("check\r\nВаше сообщение отправлено!", orderCarPage.GetOrderStatus());
+            CloseBrouser();
         }
 
         [TestMethod]
         public void InvalidAdress()
         {
-            Browser = new ChromeDriver();
-            Browser.Navigate().GoToUrl(HomePage);
-
-            MainPage mainPage = new MainPage(Browser).ClickFirstCar();
+            OpenBrouserWithSite();
+            MainPage mainPage = new MainPage(Browser).ClickFirstCar();            
 
             OrderCarPage orderCarPage = new OrderCarPage(Browser)
                 .InputAdress("Улица Пушкина дом Калатушкина")
-                .InputRentInformation("vlad", "-3751111111", "somemail@mail.ru");
+                .InputRentInformation(Person);
 
-
-            Assert.AreEqual("check\r\nВаше сообщение отправлено!", orderCarPage.completeOrder.Text);
+            NUnit.Framework.Assert.AreEqual("check\r\nВаше сообщение отправлено!", orderCarPage.GetOrderStatus());
+            CloseBrouser();
         }
     }
 }
