@@ -2,44 +2,46 @@
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Edge;
+using OpenQA.Selenium.IE;
+using OpenQA.Selenium.Support.UI;
 using System;
-using System.Collections.Generic;
-using System.Text;
+using Framework.PageObject;
 using WebDriverManager;
 using WebDriverManager.DriverConfigs.Impl;
 
 namespace Framework.Driver
 {
-    class DriverSingleton
+    public class DriverSingleton
     {
-        static IWebDriver driver;
+        private static IWebDriver Driver;
 
         private DriverSingleton() { }
 
         public static IWebDriver GetDriver()
         {
-            if (driver == null)
+            if(null == Driver)
             {
                 switch (TestContext.Parameters.Get("browser"))
                 {
                     case "Edge":
                         new DriverManager().SetUpDriver(new EdgeConfig());
-                        driver = new EdgeDriver();
+                        Driver = new EdgeDriver();
                         break;
                     default:
                         new DriverManager().SetUpDriver(new ChromeConfig());
-                        driver = new ChromeDriver();
+                        Driver = new ChromeDriver();
                         break;
                 }
-                driver.Manage().Window.Maximize();
+                Driver.Manage().Window.Maximize();
+                Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(60);
             }
-            return driver;
+            return Driver;
         }
 
         public static void CloseDriver()
         {
-            driver.Quit();
-            driver = null;
+            Driver.Quit();
+            Driver = null;
         }
     }
 }

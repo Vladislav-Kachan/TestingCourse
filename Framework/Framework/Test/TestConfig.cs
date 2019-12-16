@@ -4,13 +4,21 @@ using Framework.Driver;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.Extensions;
+using Framework.PageObject;
+using Framework.Driver;
+using NUnit.Framework.Interfaces;
+using log4net;
+using log4net.Config;
 
-namespace GitHubAutomation.Tests
+namespace Framework.Test
 {
-    public class TestConfig
+    public class TestConfig: Logger
     {
+        static private ILog Log = LogManager.GetLogger(typeof(Logger));
+
         protected IWebDriver Driver { get; set; }
 
+        
         [SetUp]
         public void Setter()
         {
@@ -18,26 +26,23 @@ namespace GitHubAutomation.Tests
             Driver.Navigate().GoToUrl("https://car-rent.by");
         }
 
-        protected void MakeScreenshotWhenFail(Action action)
+
+        [TearDown]
+        public void ClearDriver()
         {
-            try
-            {
-                action();
-            }
-            catch
+            if (TestContext.CurrentContext.Result.Outcome == ResultState.Failure)
             {
                 string screenFolder = AppDomain.CurrentDomain.BaseDirectory + @"\screens";
                 Directory.CreateDirectory(screenFolder);
                 var screen = Driver.TakeScreenshot();
                 screen.SaveAsFile(screenFolder + @"\screen" + DateTime.Now.ToString("yy-MM-dd_hh-mm-ss") + ".png",
                     ScreenshotImageFormat.Png);
-                throw;
-            }
-        }
 
-        [TearDown]
-        public void ClearDriver()
-        {
+                Log.Error("TestFailure");
+            }
+            else Log.Info("TestSuccess");
+
+
             DriverSingleton.CloseDriver();
         }
     }
