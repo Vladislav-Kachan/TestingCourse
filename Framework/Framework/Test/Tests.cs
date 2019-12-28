@@ -43,8 +43,7 @@ namespace Framework.Test
                 .ClickFirstCar()
                 .InputRentInformation(orderInfoNormal.FirstName, orderInfoNormal.MobilePhone, orderInfoNormal.MailAdress)
                 .InputDataOrder(orderInfoInvalid.StartOrder, orderInfoInvalid.EndOrder);
-            Assert.AreEqual("check\r\nВаше сообщение отправлено!", mainPage.getCompleteOrder());
-
+            Assert.AreEqual("check\r\nВаше сообщение отправлено!", mainPage.getCompleteOrder());            
         }
 
         [Test]
