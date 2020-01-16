@@ -23,6 +23,7 @@ namespace Framework.Test
         public void Setter()
         {
             Driver = DriverSingleton.GetDriver();
+            Log.Info("Open browser");
             Driver.Navigate().GoToUrl("https://car-rent.by");
         }
 
@@ -44,6 +45,7 @@ namespace Framework.Test
 
 
             DriverSingleton.CloseDriver();
+            Log.Info("Close browser");
         }
     }
 }
