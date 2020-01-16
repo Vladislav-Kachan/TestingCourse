@@ -22,8 +22,8 @@ namespace Framework.Test
         [SetUp]
         public void Setter()
         {
-            Driver = DriverSingleton.GetDriver();
             Log.Info("Open browser");
+            Driver = DriverSingleton.GetDriver();            
             Driver.Navigate().GoToUrl("https://car-rent.by");
         }
 
@@ -40,8 +40,7 @@ namespace Framework.Test
                     ScreenshotImageFormat.Png);
 
                 Log.Error("TestFailure");
-            }
-            else Log.Info("TestSuccess");
+            }            
 
 
             DriverSingleton.CloseDriver();
