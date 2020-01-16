@@ -40,11 +40,11 @@ namespace Framework.Test
                     ScreenshotImageFormat.Png);
 
                 Log.Error("TestFailure");
-            }            
+            }
 
-
-            DriverSingleton.CloseDriver();
             Log.Info("Close browser");
+            DriverSingleton.CloseDriver();
+            
         }
     }
 }
