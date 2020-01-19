@@ -96,7 +96,7 @@ namespace Framework.PageObject
         public OrderCarPage AddAviaPhoto()
         {
             addPhoto.Click();
-            photoButton.SendKeys("C:\\Users\\Vaizman\\Desktop\\12723072059797050.jpg");
+            photoButton.SendKeys("C:\\Users\\AngelDuhast\\Desktop\\image.png");
             return this;
         }
 

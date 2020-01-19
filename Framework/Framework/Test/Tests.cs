@@ -24,9 +24,7 @@ namespace Framework.Test
                 .ClickFirstCar()
                 .InputRentInformation(orderInfoNormal.FirstName, orderInfoNormal.MobilePhone, orderInfoNormal.MailAdress)
                 .InputDataOrder(orderInfoInvalid.StartOrder, orderInfoInvalid.EndOrder);
-            Assert.IsTrue(mainPage.getCompleteOrder().StartsWith("check"));
-            //Assert.AreEqual("check", mainPage.getCompleteOrder());
-
+            Assert.IsTrue(mainPage.getCompleteOrder().StartsWith("check"));         
         }
 
         [Test]
@@ -48,7 +46,6 @@ namespace Framework.Test
                 .InputRentInformation(orderInfoNormal.FirstName, orderInfoNormal.MobilePhone, orderInfoNormal.MailAdress)
                 .InputDataOrder(orderInfoInvalid.StartOrder, orderInfoInvalid.EndOrder);
             Assert.IsTrue(mainPage.getCompleteOrder().StartsWith("check"));
-            //Assert.AreEqual("check\r\nВаше сообщение отправлено!", mainPage.getCompleteOrder());
         }
 
         [Test]
@@ -61,10 +58,9 @@ namespace Framework.Test
                 .InputRentInformation(orderInfoNormal.FirstName, orderInfoInvalid.MobilePhone, orderInfoNormal.MailAdress)
                 .InputDataOrder(orderInfoNormal.StartOrder, orderInfoNormal.EndOrder);
             Assert.IsTrue(mainPage.getCompleteOrder().StartsWith("check"));
-            //Assert.AreEqual("check\r\nВаше сообщение отправлено!", mainPage.getCompleteOrder());
-
         }
 
+        [Test]
         public void OrderWithoutNameAndPhone()
         {
             NormalDataCreater orderInfoNormal = new NormalDataCreater();
@@ -73,8 +69,6 @@ namespace Framework.Test
                 .InputRentInformation("", "", orderInfoNormal.MailAdress)
                 .InputDataOrder(orderInfoNormal.StartOrder, orderInfoNormal.EndOrder);
             Assert.IsTrue(mainPage.getCompleteOrder().StartsWith("check"));
-            //Assert.AreEqual("check\r\nВаше сообщение отправлено!", mainPage.getCompleteOrder());
-
         }
 
         [Test]
@@ -88,8 +82,6 @@ namespace Framework.Test
                 .InputAdress(orderInfoInvalid.Adress)
                 .InputDataOrder(orderInfoNormal.StartOrder, orderInfoNormal.EndOrder);
             Assert.IsTrue(mainPage.getCompleteOrder().StartsWith("check"));
-            // Assert.AreEqual("check", mainPage.getCompleteOrder());
-
         }
 
         [Test]
@@ -102,8 +94,6 @@ namespace Framework.Test
                 .InputRentInformation(orderInfoNormal.FirstName, orderInfoNormal.MobilePhone, orderInfoNormal.MailAdress)
                 .InputDataOrder(orderInfoNormal.StartOrder, orderInfoNormal.EndOrder);
             Assert.IsTrue(mainPage.getCompleteOrder().StartsWith("check"));
-            //Assert.AreEqual("check\r\nВаше сообщение отправлено!", mainPage.getCompleteOrder());
-
         }
 
         [Test]
@@ -116,8 +106,6 @@ namespace Framework.Test
                 .InputRentInformation(orderInfoNormal.FirstName, orderInfoNormal.MobilePhone, orderInfoNormal.MailAdress)
                 .InputDataOrder(orderInfoNormal.StartOrder, orderInfoNormal.EndOrder);
             Assert.IsTrue(mainPage.getCompleteOrder().StartsWith("check"));
-            // Assert.AreEqual("check\r\nВаше сообщение отправлено!", mainPage.getCompleteOrder());
-
         }
 
         [Test]
@@ -131,8 +119,6 @@ namespace Framework.Test
                 .InputRentInformation(orderInfoNormal.FirstName, orderInfoNormal.MobilePhone, orderInfoNormal.MailAdress)
                 .InputDataOrder(orderInfoNormal.StartOrder, orderInfoNormal.EndOrder);
             Assert.IsTrue(mainPage.getCompleteOrder().StartsWith("check"));
-            // Assert.AreEqual("check\r\nВаше сообщение отправлено!", mainPage.getCompleteOrder());
-
         }
 
         [Test]
