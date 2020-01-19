@@ -16,6 +16,7 @@ namespace Framework.PageObject
 
         static private ILog Log = LogManager.GetLogger(typeof(Logger));
 
+
         [FindsBy(How = How.XPath, Using = @"/html/body/main/div/div[1]/div/div/section[5]/div/div/div/div/div/div[2]/div/div/div/div/div[1]/div/div/div/section[2]/div/div/div/div/div/div[1]/div/div/a")]
         private IWebElement FirstCar;
 
@@ -36,6 +37,8 @@ namespace Framework.PageObject
         {
             PageFactory.InitElements(driver, this);
             this.driver = driver;
+            new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementToBeClickable(By.XPath(@"/html/body/main/div/div[1]/div/div/section[5]/div/div/div/div/div/div[2]/div/div/div/div/div[1]/div/div/div/section[2]/div/div/div/div/div/div[1]/div/div/a")));
+
         }
 
         public SearchPage FindLada()
