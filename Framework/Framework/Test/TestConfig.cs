@@ -25,6 +25,7 @@ namespace Framework.Test
             Log.Info("Open browser");
             Driver = DriverSingleton.GetDriver();            
             Driver.Navigate().GoToUrl("https://car-rent.by");
+            Log.Info("GoToUrl");
         }
 
 
