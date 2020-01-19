@@ -29,7 +29,12 @@ namespace Framework.Driver
                         break;
                     default:
                         new DriverManager().SetUpDriver(new ChromeConfig());
-                        Driver = new ChromeDriver();
+                        ChromeOptions options = new ChromeOptions();
+                        options.AddArgument("headless");
+                        options.AddArgument("no-sandbox");
+                        options.AddArgument("proxy-server='direct://'");
+                        options.AddArgument("proxy-bypass-list=*");
+                        Driver = new ChromeDriver(options);
                         break;
                 }
                 Driver.Manage().Window.Maximize();
