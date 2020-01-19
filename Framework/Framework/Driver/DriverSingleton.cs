@@ -36,7 +36,7 @@ namespace Framework.Driver
                         break;
                 }
                 Driver.Manage().Window.Maximize();
-                Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(60);
+                Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(180);
             }
             return Driver;
         }

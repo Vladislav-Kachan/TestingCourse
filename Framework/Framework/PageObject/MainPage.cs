@@ -16,7 +16,7 @@ namespace Framework.PageObject
 
         static private ILog Log = LogManager.GetLogger(typeof(Logger));
 
-        [FindsBy(How = How.XPath, Using = @"/html/body/main/div/div[1]/div/div/section[5]/div/div/div/div/div/div[2]/div/div/div/div/div[1]/div/div/div/section[2]/div/div/div/div/div")]
+        [FindsBy(How = How.XPath, Using = @"/html/body/main/div/div[1]/div/div/section[5]/div/div/div/div/div/div[2]/div/div/div/div/div[1]/div/div/div/section[2]/div/div/div/div/div/div[1]/div/div/a")]
         private IWebElement FirstCar;
 
         [FindsBy(How = How.Name, Using = @"phrase")]
