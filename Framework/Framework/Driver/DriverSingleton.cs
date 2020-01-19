@@ -28,10 +28,11 @@ namespace Framework.Driver
                         Driver = new EdgeDriver();
                         break;
                     default:
+                        string chromeDriverDirectory = "D:\\git\\Framework\\Chrome\\79.0.3945.36\\X64";
                         new DriverManager().SetUpDriver(new ChromeConfig());
                         ChromeOptions options = new ChromeOptions();
                         options.AddArgument("no-sandbox");
-                        Driver = new ChromeDriver(options);
+                        Driver = new ChromeDriver(chromeDriverDirectory, options, TimeSpan.FromMinutes(2));
                         break;
                 }
                 Driver.Manage().Window.Maximize();
