@@ -24,7 +24,8 @@ namespace Framework.Test
                 .ClickFirstCar()
                 .InputRentInformation(orderInfoNormal.FirstName, orderInfoNormal.MobilePhone, orderInfoNormal.MailAdress)
                 .InputDataOrder(orderInfoInvalid.StartOrder, orderInfoInvalid.EndOrder);
-            Assert.AreEqual("check", mainPage.getCompleteOrder());
+            Assert.IsTrue(mainPage.getCompleteOrder().StartsWith("check"));
+            //Assert.AreEqual("check", mainPage.getCompleteOrder());
 
         }
 
@@ -46,7 +47,8 @@ namespace Framework.Test
                 .ClickFirstCar()
                 .InputRentInformation(orderInfoNormal.FirstName, orderInfoNormal.MobilePhone, orderInfoNormal.MailAdress)
                 .InputDataOrder(orderInfoInvalid.StartOrder, orderInfoInvalid.EndOrder);
-            Assert.AreEqual("check\r\nВаше сообщение отправлено!", mainPage.getCompleteOrder());
+            Assert.IsTrue(mainPage.getCompleteOrder().StartsWith("check"));
+            //Assert.AreEqual("check\r\nВаше сообщение отправлено!", mainPage.getCompleteOrder());
         }
 
         [Test]
@@ -58,7 +60,8 @@ namespace Framework.Test
                 .ClickFirstCar()
                 .InputRentInformation(orderInfoNormal.FirstName, orderInfoInvalid.MobilePhone, orderInfoNormal.MailAdress)
                 .InputDataOrder(orderInfoNormal.StartOrder, orderInfoNormal.EndOrder);
-            Assert.AreEqual("check\r\nВаше сообщение отправлено!", mainPage.getCompleteOrder());
+            Assert.IsTrue(mainPage.getCompleteOrder().StartsWith("check"));
+            //Assert.AreEqual("check\r\nВаше сообщение отправлено!", mainPage.getCompleteOrder());
 
         }
 
@@ -69,7 +72,8 @@ namespace Framework.Test
                 .ClickFirstCar()
                 .InputRentInformation("", "", orderInfoNormal.MailAdress)
                 .InputDataOrder(orderInfoNormal.StartOrder, orderInfoNormal.EndOrder);
-            Assert.AreEqual("check\r\nВаше сообщение отправлено!", mainPage.getCompleteOrder());
+            Assert.IsTrue(mainPage.getCompleteOrder().StartsWith("check"));
+            //Assert.AreEqual("check\r\nВаше сообщение отправлено!", mainPage.getCompleteOrder());
 
         }
 
@@ -83,7 +87,8 @@ namespace Framework.Test
                 .InputRentInformation(orderInfoNormal.FirstName, orderInfoNormal.MobilePhone, orderInfoNormal.MailAdress)
                 .InputAdress(orderInfoInvalid.Adress)
                 .InputDataOrder(orderInfoNormal.StartOrder, orderInfoNormal.EndOrder);
-            Assert.AreEqual("check", mainPage.getCompleteOrder());
+            Assert.IsTrue(mainPage.getCompleteOrder().StartsWith("check"));
+            // Assert.AreEqual("check", mainPage.getCompleteOrder());
 
         }
 
@@ -96,7 +101,8 @@ namespace Framework.Test
                 .ClickFirstCar()
                 .InputRentInformation(orderInfoNormal.FirstName, orderInfoNormal.MobilePhone, orderInfoNormal.MailAdress)
                 .InputDataOrder(orderInfoNormal.StartOrder, orderInfoNormal.EndOrder);
-            Assert.AreEqual("check\r\nВаше сообщение отправлено!", mainPage.getCompleteOrder());
+            Assert.IsTrue(mainPage.getCompleteOrder().StartsWith("check"));
+            //Assert.AreEqual("check\r\nВаше сообщение отправлено!", mainPage.getCompleteOrder());
 
         }
 
@@ -109,7 +115,8 @@ namespace Framework.Test
                 .AddOption()
                 .InputRentInformation(orderInfoNormal.FirstName, orderInfoNormal.MobilePhone, orderInfoNormal.MailAdress)
                 .InputDataOrder(orderInfoNormal.StartOrder, orderInfoNormal.EndOrder);
-            Assert.AreEqual("check\r\nВаше сообщение отправлено!", mainPage.getCompleteOrder());
+            Assert.IsTrue(mainPage.getCompleteOrder().StartsWith("check"));
+            // Assert.AreEqual("check\r\nВаше сообщение отправлено!", mainPage.getCompleteOrder());
 
         }
 
@@ -123,7 +130,8 @@ namespace Framework.Test
                 .AddAviaPhoto()
                 .InputRentInformation(orderInfoNormal.FirstName, orderInfoNormal.MobilePhone, orderInfoNormal.MailAdress)
                 .InputDataOrder(orderInfoNormal.StartOrder, orderInfoNormal.EndOrder);
-            Assert.AreEqual("check\r\nВаше сообщение отправлено!", mainPage.getCompleteOrder());
+            Assert.IsTrue(mainPage.getCompleteOrder().StartsWith("check"));
+            // Assert.AreEqual("check\r\nВаше сообщение отправлено!", mainPage.getCompleteOrder());
 
         }
 
