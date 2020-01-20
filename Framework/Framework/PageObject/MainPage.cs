@@ -52,7 +52,9 @@ namespace Framework.PageObject
 
         public MainPage AuthoWithDriver()
         {
-            autoWithDriver.Click();
+
+            //autoWithDriver.Click();
+            driver.Navigate().GoToUrl("https://car-rent.by/katalog/arenda-avto-s-voditelem/");
             Log.Info("Chose autho with driver");
             return this;
         }
