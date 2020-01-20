@@ -64,7 +64,7 @@ namespace Framework.PageObject
         public ContactsPage OpenContacts()
         {
             var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(60));
-            wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath(@"/html/body/div[1]/div/div/section[1]/div/div/div[1]/div/div/div/div/nav[1]/ul/li[5]/a"))).click();
+            wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath(@"/html/body/div[1]/div/div/section[1]/div/div/div[1]/div/div/div/div/nav[1]/ul/li[5]/a"))).Click();
             //contactsButton.Click();
             Log.Info("Open Contacts");
             return new ContactsPage(driver, adressFirm.ToString());
