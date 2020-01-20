@@ -63,6 +63,7 @@ namespace Framework.PageObject
 
         public ContactsPage OpenContacts()
         {
+            new WebDriverWait(driver, TimeSpan.FromSeconds(60));
             contactsButton.Click();
             Log.Info("Open Contacts");
             return new ContactsPage(driver, adressFirm.ToString());
