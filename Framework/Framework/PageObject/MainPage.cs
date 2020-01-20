@@ -20,10 +20,13 @@ namespace Framework.PageObject
         [FindsBy(How = How.XPath, Using = @"/html/body/main/div/div[1]/div/div/section[5]/div/div/div/div/div/div[4]/div/div/div/div[1]/div/div/div/section[2]/div/div/div/div/div/div[1]/div/div/a")]
         private IWebElement FirstCar;
 
+        [FindsBy(How = How.XPath, Using = @"/html/body/main/div/div[1]/div/div/section[2]/div/div/div/div/div/div[1]/div/div/div/div[1]/div/div/div/section/div/div/div/div/div/div[1]/div/div/a")]
+        private IWebElement FirstCarWithDriver;
+
         [FindsBy(How = How.Name, Using = @"phrase")]
         private IWebElement serchbox;
 
-        [FindsBy(How = How.XPath, Using = @"/html/body/div[1]/div/div/section[1]/div/div/div[1]/div/div/div/div/nav[1]/ul/li[4]/a")]
+        [FindsBy(How = How.XPath, Using = @"/html/body/div[1]/div/div/section[1]/div/div/div[1]/div/div/div/div/nav[1]/ul/li[4]")]
         private IWebElement autoWithDriver;
 
         [FindsBy(How = How.XPath, Using = @"/html/body/main/div/div[1]/div/div/section/div/div/div[1]/div/div/div/div/div/p[1]/br[1]")]
@@ -52,6 +55,13 @@ namespace Framework.PageObject
             autoWithDriver.Click();
             Log.Info("Chose autho with driver");
             return this;
+        }
+
+        public OrderCarPage ClickFirstCarWithDriver()
+        {
+            FirstCarWithDriver.Click();
+            Log.Info("Click First Car");
+            return new OrderCarPage(driver);
         }
 
         public OrderCarPage ClickFirstCar()

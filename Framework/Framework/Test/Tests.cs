@@ -66,7 +66,7 @@ namespace Framework.Test
             NormalDataCreater orderInfoNormal = new NormalDataCreater();
             OrderCarPage mainPage = new MainPage(Driver)
                 .ClickFirstCar()
-                .InputRentInformation("", "", orderInfoNormal.MailAdress)
+                .InputRentInformation(" ", " ", orderInfoNormal.MailAdress)
                 .InputDataOrder(orderInfoNormal.StartOrder, orderInfoNormal.EndOrder);
             Assert.IsTrue(mainPage.getCompleteOrder().StartsWith("check"));
         }
@@ -90,7 +90,7 @@ namespace Framework.Test
             NormalDataCreater orderInfoNormal = new NormalDataCreater();
             OrderCarPage mainPage = new MainPage(Driver)
                 .AuthoWithDriver()
-                .ClickFirstCar()
+                .ClickFirstCarWithDriver()
                 .InputRentInformation(orderInfoNormal.FirstName, orderInfoNormal.MobilePhone, orderInfoNormal.MailAdress)
                 .InputDataOrder(orderInfoNormal.StartOrder, orderInfoNormal.EndOrder);
             Assert.IsTrue(mainPage.getCompleteOrder().StartsWith("check"));
