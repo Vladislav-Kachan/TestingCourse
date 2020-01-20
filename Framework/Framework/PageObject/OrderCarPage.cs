@@ -100,6 +100,10 @@ namespace Framework.PageObject
             return this;
         }
 
-        public string getCompleteOrder() { return completeOrder.Text; }
+        public string getCompleteOrder() {
+            var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(60));
+            wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath(@"//div[@class='final-success']")));
+            
+            return completeOrder.Text; }
     }
 }
