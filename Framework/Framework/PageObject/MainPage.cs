@@ -26,14 +26,9 @@ namespace Framework.PageObject
         [FindsBy(How = How.Name, Using = @"phrase")]
         private IWebElement serchbox;
 
-        [FindsBy(How = How.XPath, Using = @"/html/body/div[1]/div/div/section[1]/div/div/div[1]/div/div/div/div/nav[1]/ul/li[4]")]
-        private IWebElement autoWithDriver;
 
         [FindsBy(How = How.XPath, Using = @"/html/body/main/div/div[1]/div/div/section/div/div/div[1]/div/div/div/div/div/p[1]/br[1]")]
         private IWebElement adressFirm;
-
-        [FindsBy(How = How.XPath, Using = @"/html/body/div[1]/div/div/section[1]/div/div/div[1]/div/div/div/div/nav[1]/ul/li[5]/a")]
-        private IWebElement contactsButton;
 
 
         public MainPage(IWebDriver driver)
@@ -52,8 +47,6 @@ namespace Framework.PageObject
 
         public MainPage AuthoWithDriver()
         {
-
-            //autoWithDriver.Click();
             driver.Navigate().GoToUrl("https://car-rent.by/katalog/arenda-avto-s-voditelem/");
             Log.Info("Chose autho with driver");
             return this;
@@ -75,7 +68,7 @@ namespace Framework.PageObject
 
         public ContactsPage OpenContacts()
         {
-            contactsButton.Click();
+            driver.Navigate().GoToUrl("https://car-rent.by/kontakty/");
             Log.Info("Open Contacts");
             return new ContactsPage(driver, adressFirm.ToString());
         }
