@@ -100,9 +100,18 @@ namespace Framework.PageObject
             return this;
         }
 
+
+
         public string getCompleteOrder() {
-            var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(60));
-            wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath(@"//div[@class='final-success']")));            
+            var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+            try
+            {
+                wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath(@"//div[@class='final-success']")));
+            }
+            catch 
+            {
+                return "error";
+            }
             return completeOrder.Text; }
     }
 }

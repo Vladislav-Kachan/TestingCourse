@@ -68,7 +68,7 @@ namespace Framework.Test
                 .ClickFirstCar()
                 .InputRentInformation(" ", " ", orderInfoNormal.MailAdress)
                 .InputDataOrder(orderInfoNormal.StartOrder, orderInfoNormal.EndOrder);
-            Assert.IsTrue(mainPage.getCompleteOrder().StartsWith("check"));
+            Assert.IsTrue(mainPage.getCompleteOrder().StartsWith("error"));
         }
 
         [Test]
