@@ -26,8 +26,8 @@ namespace Framework.PageObject
         [FindsBy(How = How.Name, Using = @"phrase")]
         private IWebElement serchbox;
 
-        [FindsBy(How = How.XPath, Using = @"/html/body/div[1]/div/div/section[1]/div/div/div[1]/div/div/div/div/nav[1]/ul/li[4]")]
-        private IWebElement autoWithDriver;
+        //[FindsBy(How = How.XPath, Using = @"/html/body/div[1]/div/div/section[1]/div/div/div[1]/div/div/div/div/nav[1]/ul/li[4]")]
+       // private IWebElement autoWithDriver;
 
         [FindsBy(How = How.XPath, Using = @"/html/body/main/div/div[1]/div/div/section/div/div/div[1]/div/div/div/div/div/p[1]/br[1]")]
         private IWebElement adressFirm;
@@ -52,7 +52,9 @@ namespace Framework.PageObject
 
         public MainPage AuthoWithDriver()
         {
-            autoWithDriver.Click();
+            var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(60));
+            wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath(@"/html/body/div[1]/div/div/section[1]/div/div/div[1]/div/div/div/div/nav[1]/ul/li[4]"))).Click();
+            //autoWithDriver.Click();
             Log.Info("Chose autho with driver");
             return this;
         }
